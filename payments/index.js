@@ -23,6 +23,15 @@ router.post('/get/:id', function (req, res) {
   });
 });
 
+router.post('/get/all', function (req, res) {
+  var db = req.db;
+  var collection = db.get('payments');
+  collection.find({}, {}, function (e, docs) {
+    res.json(docs);
+  });
+});
+
+
 
 
 router.post('/all', function (req, res) {

@@ -56,7 +56,7 @@ router.post('/feed/get', function (req, res) {
 });
 
 
-router.post('/feed/:id', function (req, res) {
+router.post('/feed/edit/:id', function (req, res) {
   var db = req.db;
   var collection = db.get('feed');
   console.log(req.body);
