@@ -26,7 +26,9 @@ router.post('/get/:id', function (req, res) {
 router.post('/get/all', function (req, res) {
   var db = req.db;
   var collection = db.get('payments');
+  console.log('get all');
   collection.find({}, {}, function (e, docs) {
+    console.log('got all');
     res.json(docs);
   });
 });
