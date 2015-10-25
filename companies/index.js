@@ -7,11 +7,22 @@ router.post('/new', function (req, res) {
   var db = req.db;
   var collection = db.get('companies');
   console.log(req.body);
-  collection.push(req.body);
+  collection.insert(req.body);
   collection.find({},{},function(e, docs){
       res.json(docs);
   });
 });
+
+router.post('/get', function (req, res) {
+  var db = req.db;
+  var collection = db.get('companies');
+  console.log(req.body);
+  collection.find({},{},function(e, docs){
+      res.json(docs);
+  });
+});
+
+
 
 router.post('/edit/:id', function (req, res) {
   var db = req.db;
