@@ -15,14 +15,6 @@ router.post('/new', function (req, res) {
   // });
 });
 
-router.post('/get/:id', function (req, res) {
-  var db = req.db;
-  var collection = db.get('payments');
-  collection.findOne({'_id' : req.params.id}, {}, function (e, docs) {
-    res.json(docs);
-  });
-});
-
 router.post('/get/all', function (req, res) {
   var db = req.db;
   var collection = db.get('payments');
@@ -32,6 +24,16 @@ router.post('/get/all', function (req, res) {
     res.json(docs);
   });
 });
+
+
+router.post('/get/:id', function (req, res) {
+  var db = req.db;
+  var collection = db.get('payments');
+  collection.findOne({'_id' : req.params.id}, {}, function (e, docs) {
+    res.json(docs);
+  });
+});
+
 
 
 
