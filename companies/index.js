@@ -47,6 +47,15 @@ router.post('/product/new', function (req, res) {
   });
 });
 
+router.post('/product/all', function (req, res) {
+  var db = req.db;
+  var collection = db.get('products');
+  collection.find({},{},function(e, docs){
+    res.json(docs);
+  });
+});
+
+
 router.post('/product/edit/:id', function (req, res) {
   var db = req.db;
   var collection = db.get('products');
@@ -70,7 +79,7 @@ router.post('/product/delete/:id', function (req, res) {
   });
 });
 
-// 562c574563ae1c89582557dd
+// 562cf057a4f5467906013afe
 router.post('/get/:id', function (req, res) {
   var db = req.db;
   var companies = db.get('companies');
