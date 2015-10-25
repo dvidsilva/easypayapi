@@ -18,7 +18,8 @@ router.post('/get', function (req, res) {
   var collection = db.get('companies');
   console.log(req.body);
   collection.find({},{},function(e, docs){
-      res.json(docs);
+    console.log('error', e);
+    res.json(docs);
   });
 });
 
