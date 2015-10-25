@@ -36,5 +36,19 @@ router.post('/token/new', function (req, res) {
 });
 
 
+
+router.post('/feed/new', function (req, res) {
+  var db = req.db;
+  var collection = db.get('feed');
+  collection.insert(req.body);
+  collection.find({},{},function(e, docs){
+      res.json(docs);
+  });
+});
+
+
+
+
+
 module.exports = router;
 
