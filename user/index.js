@@ -56,6 +56,19 @@ router.post('/feed/get', function (req, res) {
 });
 
 
+router.post('/feed/:id', function (req, res) {
+  var db = req.db;
+  var collection = db.get('feed');
+  console.log(req.body);
+  collection.update({'_id': req.params.id},{'$set' : {Picture: req.body.Picture}},function(e, docs){
+    collection.find({'_id': req.params.id},{},function(e, docs){
+      res.json(docs);
+    });
+  });
+});
+
+
+
 
 
 
